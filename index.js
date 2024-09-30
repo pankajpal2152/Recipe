@@ -13,10 +13,6 @@ app.use(cors());
 
 async function main() {
   await mongoose.connect('mongodb+srv://pankajpal8967890080:PS2I8f3xTWLPQSs4@veggify-react-app.xwojr.mongodb.net/veggify-react-app?retryWrites=true&w=majority&appName=veggify-react-app');
-
-  app.get('/', (_req, res) => {
-    res.send('Veggify Recipe App Server is running!')
-  })
 }
 
 main().then(() => console.log("Mongodb Connected Successfully!")).catch(err => console.log(err));
@@ -28,7 +24,9 @@ const CategoryRoutes = require("./src/routes/categoryRoute")
 app.use('/api', ItemRoutes)
 app.use('/api/', CategoryRoutes)
 
-
+app.get('/', (req, res) => {
+  res.send('Veggify Recipe App Server is running!')
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
